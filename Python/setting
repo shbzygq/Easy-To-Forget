@@ -1,0 +1,3 @@
+添加库：
+方法1 spyder、tools、Open command prompt、pip install ~
+方法2 直接将包复制到sys.path （放置在该路径下.../lib/site-packages/）
