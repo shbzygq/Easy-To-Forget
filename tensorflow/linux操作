@@ -1,6 +1,6 @@
 查看tensorflow版本：终端输入Python 进入Python环境，
 >>>import tensorflow as tf 
->>>tf.__vision__
+>>>tf.__version__
 
 
 查看model的帮助信息
