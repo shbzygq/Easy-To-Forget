@@ -8,3 +8,6 @@ Python环境
 >>>help()
 help>model
 查看model的帮助信息
+
+linux ctrl+H 打开隐藏的文件
+
