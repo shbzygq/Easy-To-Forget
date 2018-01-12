@@ -14,3 +14,8 @@ help>model
 linux 软件安装 bash+ .sh文件
 linux ctrl+H 打开隐藏的文件
 
+
+查看进程 nvidia-smi
+杀掉进程 kill -9
+文件所有权限 chomod 777  
+
