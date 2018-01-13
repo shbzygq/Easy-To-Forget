@@ -1,0 +1,86 @@
+class Student(object):    #class后面紧接着是类名，即Student，类名通常是大写开头的单词，紧接着是(object)表示该类是从哪个类继承下来的
+    def __init__(self, name, score): #__init__方法的第一个参数永远是self，表示创建的实例本身
+        self.name = name             #self__.name=name   这是name为私有属性外部不可访问
+        self.score = score
+    ''
+    私有属性不可访问时定义函数得到或者修改
+    def get_name(self):
+        return self.__name
+    def get_score(self):
+        return self.__score
+    def set_score(self,score):
+        self.__core=score
+    ''         
+    def print_score(std):
+        print('%s: %s' % (std.name, std.score))
+        
+bart=Student()           #创建实例是通过类名+()实现的：
+bart.name='Bart Simpson' #绑定属性
+bart.score='80'          #绑定属性
+>>>bart.print_score()       
+Bart Simpson: 59         #数据封装,每个实例都包含name和score两个属性
+
+
+
+
+类的继承和多态
+
+继承：
+class Animal(object):
+    def run(self):
+        print('Animal is running...')
+class Dog(Animal):                    #Dog类继承Animal类的属性
+    pass
+
+class Cat(Animal):
+    pass
+    
+dog = Dog()  #类的实例化
+dog.run()    
+
+cat = Cat()
+cat.run()
+
+运行结果
+Animal is running...
+Animal is running...
+
+多态：
+class Animal(object):
+    def run(self):
+        print('Animal is running...')
+class Dog(Animal):                    #Dog类继承Animal类的属性
+    def run(self):
+        print('dog is runing...')
+
+class Cat(Animal):
+    def run(self):
+        print('cat is runing...')
+    
+dog = Dog()  #类的实例化
+dog.run()    
+
+cat = Cat()
+cat.run()
+
+运行结果
+dog is running...
+cat is running...
+当子类和父类含有相同的方法时 run  子类的run覆盖了父类的run 
+
+
+class Person(object):
+    def __init__(self,name,sex):
+        self.name = name
+        self.sex = sex
+
+class Child(Person):                          # Child 继承 Person
+    def __init__(self,name,sex,mother,father):
+        Person.__init__(self,name,sex)        # 子类对父类的构造方法的调用 等同于 self.name=name self.sex=sex
+        self.mother = mother
+        self.father = father
+
+May = Child("May","female","April","June")
+print(May.name,May.sex,May.mother,May.father)
+
+多重继承：优先继承最近父类的方法
