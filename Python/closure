@@ -1,0 +1,13 @@
+闭包
+
+def outer():
+     x = 1                 # x 为局部变量  变量生存周期 函数outer的定义内
+     def inner():          
+         print (x)         # x变量对于inner函数来说是全局变量，函数作用域内可以调用，修改全局变量。
+     return inner          # 此处不返回函数inner的话， inner函数永远不会被调用。              
+print1 = outer(1)         
+print2 = outer(2)          
+>>>print1()
+1                          #   嵌套定义在非全局作用域里面的函数能够记住它在被定义的时候它所处的封闭命名空间
+>>>print2()
+2 
