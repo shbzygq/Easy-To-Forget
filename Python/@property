@@ -1,1 +1,30 @@
-啊
+装饰器decorator  本质上，decorator就是一个返回函数的高阶函数  
+
+定义一个打印日志decorator
+def log(func):
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+@log                               #等同于now = log(now)
+def now():
+    print('2015-3-25')
+    
+>>>now()
+call now
+2015-3-25
+
+
+class Student(object):
+
+    @property
+    def score(self):
+        return self._score
+
+    @score.setter
+    def score(self, value):
+        if not isinstance(value, int):
+            raise ValueError('score must be an integer!')
+        if value < 0 or value > 100:
+            raise ValueError('score must between 0 ~ 100!')
+        self._score = value
