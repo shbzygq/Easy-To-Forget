@@ -1,7 +1,14 @@
 class Student(object):    #class后面紧接着是类名，即Student，类名通常是大写开头的单词，紧接着是(object)表示该类是从哪个类继承下来的
-    def __init__(self, name, score): #__init__方法的第一个参数永远是self，表示创建的实例本身
+    def __init__(self, name, score): #__init__方法的第一个参数永远是self，表示创建的实例本身    
         self.name = name             #self__.name=name   这是name为私有属性外部不可访问
         self.score = score
+    ''
+    def __slots__(self,name,score) 
+        self.name=name
+        self.score=score            #规定Student类只能有name和score两个属性。__slots__  限制在实例中添加属性
+    ''  
+        
+        
     ''
     私有属性不可访问时定义函数得到或者修改
     def get_name(self):
