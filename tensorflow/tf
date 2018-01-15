@@ -1,0 +1,45 @@
+tf.variable_scope
+
+import tensorflow as tf
+with tf.variable_scope('v_scope') as scope1:
+    Weights1 = tf.get_variable('Weights', shape=[2,3])
+    bias1 = tf.get_variable('bias', shape=[3])
+
+# 下面来共享上面已经定义好的变量
+# note: 在下面的 scope 中的变量必须已经定义过了，才能设置 reuse=True，否则会报错
+with tf.variable_scope('v_scope', reuse=True) as scope2: 
+    Weights2 = tf.get_variable('Weights')
+
+print(Weights1.name)
+print(eights2.nameW)
+# 可以看到这两个引用名称指向的是同一个内存对象
+v_scope/Weights:0
+v_scope/Weights:0
+
+
+
+tf.name_scope 主要结合 tf.Variable() 来使用，方便参数命名管理 
+
+with tf.name_scope('conv1') as scope:
+    weights1 = tf.Variable([1.0, 2.0], name='weights')
+    bias1 = tf.Variable([0.3], name='bias')
+print(weights1.name)
+conv1/weights:0
+
+
+tf.get_variable() 和tf.Variable()   当我们需要共享变量的时候，需要使用tf.get_variable()
+
+import tensorflow as tf
+with tf.variable_scope("scope1"):
+    w1 = tf.get_variable("w1", shape=[])
+    w2 = tf.Variable(0.0, name="w2")
+with tf.variable_scope("scope1", reuse=True):
+    w1_p = tf.get_variable("w1", shape=[])
+    w2_p = tf.Variable(1.0, name="w2")
+
+>>>print(w1 is w1_p, w2 is w2_p)
+#True  False
+
+由于tf.Variable() 每次都在创建新对象，所有reuse=True 和它并没有什么关系。
+对于get_variable(),如果已经创建的变量对象，就把那个对象返回，如果没有创建变量对象的话，就创建一个新的。
+
